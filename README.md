@@ -47,7 +47,23 @@ Below are the notebooks containing all the code for producing all the results an
 
 **Produced figures**: Fig. 1B
 
-**Required data files**: The processed h5ad file, rawSingletForR15Kcells.h5ad and the input file inferCNVgeneName.txt. 
+**Required data files**: The processed h5ad file, `rawSingletForR15Kcells.h5ad` and the input file `inferCNVgeneName.txt`. 
+
+## `Figure_S2F.ipynb`
+
+**Description**: Creates a scatterplot of the genomic coordinates of imputed breakpoints for cells that we predict have lost a partial chunk of a chromosome vs. the genomic coordinates targeted by the gRNA in these cells.
+
+**Produced figures**: Fig. S2F
+
+**Required data files**: `aneuploidy_events.csv`, `qced.h5ad`, `inferCNVgeneName.txt`, `centromeres.txt`, `chr_lengths.csv` (the last two files are available in the `data/` folder in this repo, the others are on GEO)
+
+## `Figure_S6D.ipynb`
+
+**Description**: Creates alternate versions of the chromosomal loss enrichment matrix (original: Fig 2C) when different numbers of genes are included in the inferCNV outputs.
+
+**Produced figures**: Fig. S6D
+
+**Required data files**: `Concat_InferCNV.pkl`, `qced.h5ad`, `inferCNVgeneName.txt`
 
 # Re-processing the data files
 
