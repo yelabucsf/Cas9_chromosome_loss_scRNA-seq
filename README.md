@@ -8,6 +8,7 @@ The repo contains:
 1. Scripts for producing the results and figures in the paper:
    - `crop_seq_and_cell_state_analysis.ipynb`
    - `chr14_11gRNA_heatmap.ipynb`
+   - `Figure*.ipynb` (some of the notebooks depend on additional small data files in `data/`)
 2. Scripts and files for processing the raw fastq and intermediate files to produce the final dataset (gene-expression matrix, sgRNA assignments, copy-number estimates from inferCNV and estimated aneuploidy events):
    - `data_processing/guide_assign_binomial.ipynb`
    - `data_processing/ainfercnv_prep.ipynb`
@@ -49,6 +50,16 @@ Below are the notebooks containing all the code for producing all the results an
 
 **Required data files**: The processed h5ad file, `rawSingletForR15Kcells.h5ad` and the input file `inferCNVgeneName.txt`. 
 
+## `Figure1_CtoE_breakpoint_calc.ipynb`
+
+**Description**: Breakpoints and aneuploidy were quantified using this notebook. The workflow for estimating breakpoints is similar to the process used in the CROP-seq dataset (refer to `crop_seq_and_cell_state_analysis.ipynb` or the "Re-processing the data files" section for more details). It was used to create plots for Figures 1 C and D and serves as the underlying data for panel E.
+
+**Produced figures**: Fig. 1 C-E
+
+**Required data files**: `cas9ProcessedAneuploidyStatus.h5ad`, `GUIDEvsNT_CHR14_RESULTS.txt`, `inferCNVgeneName.txt`
+
+**Output file**: `TRAC_aneuploidy_breakpoints_ALLChromo.csv`
+
 ## `Figure_S2F.ipynb`
 
 **Description**: Creates a scatterplot of the genomic coordinates of imputed breakpoints for cells that we predict have lost a partial chunk of a chromosome vs. the genomic coordinates targeted by the gRNA in these cells.
@@ -56,6 +67,34 @@ Below are the notebooks containing all the code for producing all the results an
 **Produced figures**: Fig. S2F
 
 **Required data files**: `aneuploidy_events.csv`, `qced.h5ad`, `inferCNVgeneName.txt`, `centromeres.txt`, `chr_lengths.csv` (the last two files are available in the `data/` folder in this repo, the others are on GEO)
+
+## `Fig3D_Analysis_Epigenetics.ipynb`
+
+**Description**: Datasets corresponding to activated T cells from a male donor were sourced from the ENCODE Portal (ATAC-seq: `ENCFF233TXT`, H3K36me3: `ENCFF055FYI` and H3K9me3:`ENCFF129GAM`). The data was analyzed using this notebook. A two-sided Fisher’s Exact Test determined if the presence of an epigenetic mark affected chromosome loss.
+
+**Produced figures**: Fig. 3D
+
+**Required data files**: `qced.h5ad`, `Concat_InferCNV.pkl`, `Guide_Genomic_Coordinates.xlsx`, `inferCNVgeneName.txt`, `All_Aneuploidy_Events_ByChromoAndDominantGuide.xlsx`
+
+## `Figure_5C_breakpoint_calc_CART.ipynb`
+
+**Description**: Breakpoints and aneuploidy were quantified using this notebook. Breakpoint and aneuploidy calling mirrored the methods in the CROP-seq experiment (see `crop_seq_and_cell_state_analysis.ipynb` or the "Re-processing the data files" section for more details).
+
+**Produced figures**: Fig. 5C
+
+**Required data files**: `CAR-T_ALL-CELLS.h5ad`, `inferCNV_results_CAR-T_Donor6_Day4.txt`, `inferCNV_results_CAR-T_Donor6_Day7.txt`, `inferCNV_results_CAR-T_Donor7_Day4.txt`, `inferCNV_results_CAR-T_Donor7_Day7.txt`, `inferCNVgeneName.txt`
+
+**Output file**: `CART_UCSF_aneuploidy_breakpoints.csv`
+
+## `Figure6E_Clinical_Results_Summary.ipynb`
+
+**Description**: Breakpoints and aneuploidy were tabulated using this notebook, similarly to the CROP-seq experiment (refer to `crop_seq_and_cell_state_analysis.ipynb` or the "Re-processing the data files" section for further insights).
+
+**Produced figures**: Fig. 6E
+
+**Required data files**: `trbc_calls.csv`, `trac_calls.csv`, `pd1_calls.csv`
+
+**Output file**: `Aneuploidy_Enrichment_in_vivo_samples.xlsx`
 
 ## `Figure_S6D.ipynb`
 
